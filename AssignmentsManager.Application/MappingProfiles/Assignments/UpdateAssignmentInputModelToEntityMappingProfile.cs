@@ -4,8 +4,8 @@ using AutoMapper;
 
 namespace AssignmentsManager.Application.MappingProfiles.Assignments
 {
-    public class AssignmentUpdateModelToEntityMappingProfile : Profile
+    public class UpdateAssignmentInputModelToEntityMappingProfile : Profile
     {
-        public AssignmentUpdateModelToEntityMappingProfile() => CreateMap<UpdateAssignmentInputModel, Assignment>();
+        public UpdateAssignmentInputModelToEntityMappingProfile() => CreateMap<UpdateAssignmentInputModel, Assignment>();
     }
 }

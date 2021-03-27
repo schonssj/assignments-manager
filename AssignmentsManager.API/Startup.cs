@@ -28,7 +28,7 @@ namespace AssignmentsManager.API
         {
             services.AddControllers();
             services.AddDbContext<AssignmentsManagerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AssignmentsManagerDatabase")));
-            services.AddAutoMapper(typeof(AssignmentInputModelToEntityMappingProfile));
+            services.AddAutoMapper(typeof(CreateAssignmentInputModelToEntityMappingProfile));
             services.AddScoped<IAssignmentRepository, AssignmentRepository>();
             services.AddScoped<AssignmentsManagerContext, AssignmentsManagerContext>();
             services.AddScoped<IAssignmentService, AssignmentService>();

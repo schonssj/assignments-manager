@@ -4,9 +4,9 @@ using AutoMapper;
 
 namespace AssignmentsManager.Application.MappingProfiles.Assignments
 {
-    public class AssignmentInputModelToEntityMappingProfile : Profile
+    public class CreateAssignmentInputModelToEntityMappingProfile : Profile
     {
-        public AssignmentInputModelToEntityMappingProfile()
+        public CreateAssignmentInputModelToEntityMappingProfile()
         {
             CreateMap<CreateAssignmentInputModel, Assignment>()
                 .ForMember(destination => destination.Id, source => source.Ignore())
