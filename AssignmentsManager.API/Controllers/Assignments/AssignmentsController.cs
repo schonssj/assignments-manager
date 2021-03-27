@@ -122,7 +122,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
 
             var id = await _assignmentService.CreateAssignment(createAssignmentInputModel);
 
-            return CreatedAtAction(nameof(GetById), new { id }, createAssignmentInputModel);
+            return CreatedAtAction(nameof(CreateAssignment), new { id }, createAssignmentInputModel);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         ///
         ///     PUT /assignments
         ///     {
-        ///        "id": 1
+        ///        "id": 1,
         ///        "title": "Novo título.",
         ///        "description": "Nova descrição.",
         ///        "hasBeenDone": false
@@ -157,7 +157,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
             if (response == 0)
                 return NotFound();
 
-            return CreatedAtAction(nameof(GetById), updateAssignmentInputModel);
+            return CreatedAtAction(nameof(UpdateAssignment), updateAssignmentInputModel);
         }
 
         /// <summary>
@@ -170,6 +170,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// </remarks>
         /// <param name="id">Id da tarefa.</param>
         /// <response code="200">Sucesso.</response>
+        /// <response code="404">Registro não encontrado.</response>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
