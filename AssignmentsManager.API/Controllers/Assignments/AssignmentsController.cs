@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using AssignmentsManager.Application.InputModels.Assignments;
 using Microsoft.AspNetCore.Http;
+using AssignmentsManager.Application.ViewModels.Assignments;
+using System.Collections.Generic;
 
 namespace AssignmentsManager.API.Controllers.Assignments
 {
@@ -28,7 +30,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <response code="200">Sucesso.</response>
         /// <response code="404">Registro não encontrado.</response>
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(AssignmentViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetById(int id)
         {
@@ -51,7 +53,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <returns>Uma lista de tarefas.</returns>
         /// <response code="200">Sucesso.</response>
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<AssignmentViewModel>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll()
         {
             var assignments = await _assignmentService.GetAll();
@@ -69,7 +71,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <returns>Uma lista de tarefas.</returns>
         /// <response code="200">Sucesso.</response>
         [HttpGet("done")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<AssignmentViewModel>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetDone()
         {
             var assignments = await _assignmentService.GetDone();
@@ -87,7 +89,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <returns>Uma lista de tarefas.</returns>
         /// <response code="200">Sucesso.</response>
         [HttpGet("not-done-yet")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<AssignmentViewModel>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetNotDoneYet()
         {
             var assignments = await _assignmentService.GetNotDoneYet();
@@ -111,7 +113,7 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <response code="201">Retorna a tarefa cadastrada.</response>
         /// <response code="400">Modelo dos dados de entrada inválido.</response>
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(AssignmentViewModel), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateAssignment([FromBody]CreateAssignmentInputModel createAssignmentInputModel)
         {
@@ -138,11 +140,11 @@ namespace AssignmentsManager.API.Controllers.Assignments
         ///     }
         /// </remarks>
         /// <param name="updateAssignmentInputModel">Modelo dos dados de entrada.</param>
-        /// <response code="201">Retorna a tarefa cadastrada.</response>
+        /// <response code="201">Retorna a tarefa atualizada.</response>
         /// <response code="400">Modelo dos dados de entrada inválido.</response>
         /// <response code="404">Registro não encontrado.</response>
         [HttpPut]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(AssignmentViewModel), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> UpdateAssignment([FromBody] UpdateAssignmentInputModel updateAssignmentInputModel)
@@ -169,7 +171,8 @@ namespace AssignmentsManager.API.Controllers.Assignments
         /// <param name="id">Id da tarefa.</param>
         /// <response code="200">Sucesso.</response>
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteAssignment(int id)
         {
             var response = await _assignmentService.DeleteAssignment(id);
