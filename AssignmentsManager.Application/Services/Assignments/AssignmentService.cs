@@ -79,15 +79,9 @@ namespace AssignmentsManager.Application.Services.Assignments
 
         public async Task<int> UpdateAssignment(UpdateAssignmentInputModel updateAssignmentInputModel)
         {
-            var assignmentCallback = await Task.FromResult(_assignmentRepository.GetById(updateAssignmentInputModel.Id));
+            var mappedInputModelToEntity = _mapper.Map<UpdateAssignmentInputModel, Assignment>(updateAssignmentInputModel);
 
-            // TODO: Refatorar tipo de retorno.
-            if (assignmentCallback.Result == null)
-                return 0;
-
-            var mapInputModelToEntity = _mapper.Map<UpdateAssignmentInputModel, Assignment>(updateAssignmentInputModel);
-
-            var updateAssignmentCallback = await Task.FromResult(_assignmentRepository.UpdateAssignment(mapInputModelToEntity));
+            var updateAssignmentCallback = await Task.FromResult(_assignmentRepository.UpdateAssignment(mappedInputModelToEntity));
 
             return updateAssignmentCallback.Result;
         }

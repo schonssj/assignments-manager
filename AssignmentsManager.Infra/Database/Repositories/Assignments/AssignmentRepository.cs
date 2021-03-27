@@ -29,6 +29,12 @@ namespace AssignmentsManager.Infra.Database.Repositories.Assignments
         
         public async Task<int> UpdateAssignment(Assignment assignment)
         {
+            var findAssignment = await _assignmentsManagerContext.Assignment.FirstOrDefaultAsync(a => a.Id == assignment.Id);
+
+            if (findAssignment == null)
+                return 0;
+
+            _assignmentsManagerContext.Entry(findAssignment).State = EntityState.Detached;
             _assignmentsManagerContext.Assignment.Update(assignment);
             return await _assignmentsManagerContext.SaveChangesAsync();
         }
