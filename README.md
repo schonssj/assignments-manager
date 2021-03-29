@@ -4,11 +4,11 @@
 Esta é uma API RESTful tematizada pelo gerenciamento de tarefas. Ela foi escrita com a linguagem C#, utilizando a plataforma .NET Core. Seu armazenamento de dados é feito em um banco de dados relacional, utilizando o SQL Server. Toda esta tecnologia está hospedada na Microsoft Azure.
 
 ## Como foi pensada? ##
-A estrutura da solução foi **embasada** nos conceitos arguidos pela Clean Architecture, onde foram elencadas 4 camadas a isolarem as responsabilidades da aplicação em seus devidos contextos, sendo elas:
+A estrutura da solução foi **embasada** nos conceitos arguidos pela Clean Architecture (MARTIN, 2017), onde foram elencadas 4 camadas a isolarem as responsabilidades da aplicação em seus devidos contextos, sendo elas:
 
 O **Core**, que é o núcleo, a essência. Lá estão as entidades que desvencilham as regras de negócio presentes no sistema. A **Infra** é subsidiária destas entidades, alimentando seus atributos com base na requisição desejada pela **Application**, a qual fornece o entendimento sobre a massa de dados injetada pelo cliente na **API**.
 
-Para entender como é orquestrado o fluxo de atividades, acesse [este link](https://trello.com/invite/b/ZBsz5V2n/28648543c2bbda854ead91b37b1fb2c3/assignments-manager-api-board). 
+Para entender como o desenvolvimento é orquestrado num gerenciador de atividades, acesse [este link](https://trello.com/invite/b/ZBsz5V2n/28648543c2bbda854ead91b37b1fb2c3/assignments-manager-api-board).
 
 ## Como testar? ##
 Para testar a API publicada, acesse [este link](https://assignmentsmanagerapi20210322090832.azurewebsites.net/swagger/index.html). Nele, você encontrará uma interface apta à testar os métodos de consulta, adição, edição e remoção de dados na API.
