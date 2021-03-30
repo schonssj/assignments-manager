@@ -6,7 +6,10 @@ Esta é uma API RESTful tematizada pelo gerenciamento de tarefas. Ela foi escrit
 ## Como foi pensada? ##
 A estrutura da solução foi **embasada** nos conceitos arguidos pela Clean Architecture (MARTIN, 2017), onde foram elencadas 4 camadas a isolarem as responsabilidades da aplicação em seus devidos contextos, sendo elas:
 
-O **Core**, que é o núcleo, a essência. Lá estão as entidades que desvencilham as regras de negócio presentes no sistema. A **Infra** é subsidiária destas entidades, alimentando seus atributos com base na requisição desejada pela **Application**, a qual fornece o entendimento sobre a massa de dados injetada pelo cliente na **API**.
+A **Infra** sustenta o sistema com os seus repositórios e trata de conversar com o banco de dados.
+O **Core** é o núcleo, a essência. Lá estão as entidades que desvencilham as regras presentes no sistema. 
+A **Application** intermedia a comunicação entre o que a API deseja e o que o Core tem para oferecer.
+A **API** é o que se expõe para o consumidor, é onde se pode entender o seu propósito.
 
 Para entender como o desenvolvimento é orquestrado num gerenciador de atividades, acesse [este link](https://trello.com/invite/b/ZBsz5V2n/28648543c2bbda854ead91b37b1fb2c3/assignments-manager-api-board).
 
