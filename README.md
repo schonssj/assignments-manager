@@ -1,3 +1,10 @@
 # Assignments Manager API #
 
-This is a kind of guinea pig where I eventually apply some concepts about APIs.
+TO DO:
+
+- [ ] Verify coherence of having asynchronous methods in all layers;
+- [ ] Implement tests layer;
+- [ ] Implement logs;
+- [ ] Implement observability tool ;
+- [ ] Implement authentication layer (JWT, OAuth and relatives);
+- [ ] Implement message broker (RabbitMQ framework probably);
